@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/go-dax-sdk/aws"
+	"github.com/JinAirsOs/go-dax-sdk/aws"
 )
 
 const (

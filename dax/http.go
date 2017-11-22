@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/go-dax-sdk/aws"
+	"github.com/JinAirsOs/go-dax-sdk/aws"
 )
 
 type HttpResponse struct {
