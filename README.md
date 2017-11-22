@@ -1,6 +1,4 @@
-# go-dax-sdk
-dax.btcc.com trading api sdk
-go-dax-sdk [![GoDoc](https://godoc.org/JinAirsOs/go-dax-sdk?status.svg)](https://godoc.org/github.com/toorop/go-bittrex)
+go-dax-sdk [![GoDoc](https://godoc.org/JinAirsOs/go-dax-sdk?status.svg)](https://godoc.org/github.com/JinAirsOs/go-dax-sdk)
 ==========
 
 ## Useage:
