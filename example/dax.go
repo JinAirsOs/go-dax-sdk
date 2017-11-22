@@ -47,7 +47,7 @@ func main() {
 
 	//websocket
 	stop := make(chan struct{})
-	defer close(stop)
+	//defer close(stop)
 	dataCh := make(chan []byte, 16)
 	go daxClient.SubscribeExchange("ETH_BTC", dataCh, stop)
 	go func() {
