@@ -39,7 +39,7 @@ func (d *Dax) GetAccountInfo() (*HttpResponse, error) {
 //for open orders go to subscribe websocket api
 func (d *Dax) GetMyOrders(currencyPair string) (*HttpResponse, error) {
 	uri := "orders/" + currencyPair + "/open"
-	resp := d.doRequest("GET", uri, nil)
+	resp, err := d.doRequest("GET", uri, nil)
 	return resp, err
 }
 
