@@ -1,5 +1,7 @@
 # go-dax-sdk
 dax.btcc.com trading api sdk
+go-dax-sdk [![GoDoc](https://godoc.org/JinAirsOs/go-dax-sdk?status.svg)](https://godoc.org/github.com/toorop/go-bittrex)
+==========
 
 ## Useage:
 first
@@ -16,6 +18,7 @@ go get -u github.com/satori/go.uuid
 ```
 go doc github.com/JinAirsOs/go-dax-sdk/dax.Dax
 go doc github.com/JinAirsOs/go-dax-sdk/dax
+go doc github.com/JinAirsOs/go-dax-sdk/aws
 ```
 here is an example,you may edit it in github.com/JinAirsOs/go-dax-sdk/example/dax.go
 

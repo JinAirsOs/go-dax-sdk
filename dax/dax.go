@@ -1,3 +1,4 @@
+//Package dax provides a trading api sdk and subscribe websocket
 package dax
 
 import (

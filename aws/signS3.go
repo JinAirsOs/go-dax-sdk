@@ -1,3 +1,4 @@
+// Package aws provides sign for aws-s3
 package aws
 
 import (
