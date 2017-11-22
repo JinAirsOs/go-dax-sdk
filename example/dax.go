@@ -2,6 +2,9 @@ package main
 
 import (
 	"log"
+	"os"
+	"os/signal"
+	"time"
 
 	"github.com/JinAirsOs/go-dax-sdk/dax"
 )
@@ -13,6 +16,9 @@ const (
 
 func main() {
 	daxClient := dax.New(DAX_API_KEY, DAX_API_SECRET)
+
+	interrupt := make(chan os.Signal, 1)
+	signal.Notify(interrupt, os.Interrupt)
 
 	//get account info
 	resp := daxClient.GetAccountInfo()
@@ -36,4 +42,29 @@ func main() {
 	//cancel an order
 	resp = daxClient.CancelOrder("ETH_BTC", "0123456789abcdef0123456789abcdef")
 	log.Println(string(resp.Body))
+
+	//websocket client
+
+	//websocket
+	stop := make(chan struct{})
+	defer close(stop)
+	dataCh := make(chan []byte, 16)
+	go daxClient.SubscribeExchange("ETH_BTC", dataCh, stop)
+	go func() {
+		for data := range dataCh {
+			log.Println(string(data))
+		}
+	}()
+	select {
+	case <-interrupt:
+		close(stop)
+		select {
+		case <-time.After(2 * time.Second):
+		}
+	case <-stop:
+		log.Println("dax websocket closed")
+		select {
+		case <-time.After(2 * time.Second):
+		}
+	}
 }
