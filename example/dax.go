@@ -22,7 +22,7 @@ func main() {
 
 	//get account info
 	var err error
-	var resp dax.HttpResponse
+	var resp *dax.HttpResponse
 
 	resp, err = daxClient.GetAccountInfo()
 	log.Println(string(resp.Body))
