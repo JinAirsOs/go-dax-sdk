@@ -1,7 +1,7 @@
 go-dax-sdk [![GoDoc](https://godoc.org/JinAirsOs/go-dax-sdk?status.svg)](https://godoc.org/github.com/JinAirsOs/go-dax-sdk)
 ==========
 
-## Useage:
+## Usage:
 first
 ```
 go get -u github.com/JinAirsOs/go-dax-sdk/dax
