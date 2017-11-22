@@ -29,21 +29,21 @@ func New(apiKey, apiSecret string) *Dax {
 	return &d
 }
 
-func (d *Dax) GetAccountInfo() *HttpResponse {
+func (d *Dax) GetAccountInfo() *HttpResponse,error {
 	uri := "balance"
-	resp := d.doRequest("GET", uri, nil)
+	resp, err := d.doRequest("GET", uri, nil)
 
-	return resp
+	return resp, err
 }
 
 //for open orders go to subscribe websocket api
-func (d *Dax) GetMyOrders(currencyPair string) *HttpResponse {
+func (d *Dax) GetMyOrders(currencyPair string) *HttpResponse,error{
 	uri := "orders/" + currencyPair + "/open"
 	resp := d.doRequest("GET", uri, nil)
-	return resp
+	return resp, err
 }
 
-func (d *Dax) PlaceOrder(order Order) *HttpResponse {
+func (d *Dax) PlaceOrder(order Order) *HttpResponse,error {
 	uri := "orders"
 	data := url.Values{}
 	data.Set("symbol", order.CurrencyPair)
@@ -52,12 +52,12 @@ func (d *Dax) PlaceOrder(order Order) *HttpResponse {
 	data.Add("type", order.Type)
 	data.Add("side", order.BuyOrSell)
 
-	resp := d.doRequest("POST", uri, []byte(data.Encode()))
-	return resp
+	resp, err := d.doRequest("POST", uri, []byte(data.Encode()))
+	return resp, err
 }
 
-func (d *Dax) CancelOrder(currencyPair, oid string) *HttpResponse {
+func (d *Dax) CancelOrder(currencyPair, oid string) *HttpResponse,error {
 	uri := "orders/" + currencyPair + "/" + oid
-	resp := d.doRequest("DELETE", uri, nil)
-	return resp
+	resp, err := d.doRequest("DELETE", uri, nil)
+	return resp, err
 }

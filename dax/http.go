@@ -16,7 +16,7 @@ type HttpResponse struct {
 	Body       []byte
 }
 
-func (d *Dax) doRequest(method, uri string, rawbody []byte) *HttpResponse {
+func (d *Dax) doRequest(method, uri string, rawbody []byte) *HttpResponse, error {
 	uri = strings.TrimLeft(uri, "/")
 	url := d.ApiBase + uri
 	var req *http.Request
@@ -43,7 +43,7 @@ func (d *Dax) doRequest(method, uri string, rawbody []byte) *HttpResponse {
 	//log.Println("request", req)
 	resp, err := d.Client.Do(req)
 	if err != nil {
-		panic(err)
+		return &HttpResponse{}, err
 	}
 	defer resp.Body.Close()
 
@@ -52,5 +52,5 @@ func (d *Dax) doRequest(method, uri string, rawbody []byte) *HttpResponse {
 	body, _ := ioutil.ReadAll(resp.Body)
 	//log.Println("response Body:", string(body))
 
-	return &HttpResponse{StatusCode: resp.StatusCode, Body: body}
+	return &HttpResponse{StatusCode: resp.StatusCode, Body: body}, nil
 }
