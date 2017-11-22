@@ -1,7 +1,18 @@
 # go-dax-sdk
 dax.btcc.com trading api sdk
 
-### useage:
+### Useage:
+first
+```
+go get -u github.com/JinAirsOs/go-dax-sdk/dax
+```
+
+for websocket api you may need
+```
+go get -u github.com/gorilla/websocket
+go get -u github.com/satori/go.uuid
+```
+
 here is an example,you may edit it in github.com/JinAirsOs/go-dax-sdk/example/dax.go
 
 ```
