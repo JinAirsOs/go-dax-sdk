@@ -87,3 +87,11 @@ func main() {
 	}
 }
 ```
+
+Donate
+------
+Bitcoin
+
+![Donation QR](http://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bitcoin:1D1m9mRHegmBZnqqUVMZPauqaUqvhQfgod%3Flabel%3DStalker)
+
+[1D1m9mRHegmBZnqqUVMZPauqaUqvhQfgod](http://tinyurl.com/ybeg28qq)
