@@ -44,15 +44,18 @@ func main() {
 	signal.Notify(interrupt, os.Interrupt)
 
 	//get account info
-	resp := daxClient.GetAccountInfo()
+	var err error
+	var resp *dax.HttpResponse
+
+	resp, err = daxClient.GetAccountInfo()
 	log.Println(string(resp.Body))
 
 	//get my open orders
-	resp = daxClient.GetMyOrders("ETH_BTC")
+	resp, err = daxClient.GetMyOrders("ETH_BTC")
 	log.Println(string(resp.Body))
 
 	//place an order
-	resp = daxClient.PlaceOrder(
+	resp, err = daxClient.PlaceOrder(
 		dax.Order{CurrencyPair: "ETH_BTC", // currency pair
 			Price:     "0.11111", //order price
 			Quantity:  "0.00001", // order quantity
@@ -63,7 +66,7 @@ func main() {
 
 	/*{"symbol":"ETH_BTC","price":"0.11111","quantity":"0.00001","type":"LIMIT","side":"SELL"}*/
 	//cancel an order
-	resp = daxClient.CancelOrder("ETH_BTC", "0123456789abcdef0123456789abcdef")
+	resp, err = daxClient.CancelOrder("ETH_BTC", "0123456789abcdef0123456789abcdef")
 	log.Println(string(resp.Body))
 
 	//websocket client
