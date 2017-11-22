@@ -16,7 +16,7 @@ type HttpResponse struct {
 	Body       []byte
 }
 
-func (d *Dax) doRequest(method, uri string, rawbody []byte) *HttpResponse, error {
+func (d *Dax) doRequest(method, uri string, rawbody []byte) (*HttpResponse, error) {
 	uri = strings.TrimLeft(uri, "/")
 	url := d.ApiBase + uri
 	var req *http.Request

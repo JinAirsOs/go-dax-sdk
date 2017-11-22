@@ -21,7 +21,10 @@ func main() {
 	signal.Notify(interrupt, os.Interrupt)
 
 	//get account info
-	resp, err := daxClient.GetAccountInfo()
+	var err error
+	var resp dax.HttpResponse
+
+	resp, err = daxClient.GetAccountInfo()
 	log.Println(string(resp.Body))
 
 	//get my open orders

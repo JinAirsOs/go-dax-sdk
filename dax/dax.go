@@ -29,7 +29,7 @@ func New(apiKey, apiSecret string) *Dax {
 	return &d
 }
 
-func (d *Dax) GetAccountInfo() *HttpResponse,error {
+func (d *Dax) GetAccountInfo() (*HttpResponse, error) {
 	uri := "balance"
 	resp, err := d.doRequest("GET", uri, nil)
 
@@ -37,13 +37,13 @@ func (d *Dax) GetAccountInfo() *HttpResponse,error {
 }
 
 //for open orders go to subscribe websocket api
-func (d *Dax) GetMyOrders(currencyPair string) *HttpResponse,error{
+func (d *Dax) GetMyOrders(currencyPair string) (*HttpResponse, error) {
 	uri := "orders/" + currencyPair + "/open"
 	resp := d.doRequest("GET", uri, nil)
 	return resp, err
 }
 
-func (d *Dax) PlaceOrder(order Order) *HttpResponse,error {
+func (d *Dax) PlaceOrder(order Order) (*HttpResponse, error) {
 	uri := "orders"
 	data := url.Values{}
 	data.Set("symbol", order.CurrencyPair)
@@ -56,7 +56,7 @@ func (d *Dax) PlaceOrder(order Order) *HttpResponse,error {
 	return resp, err
 }
 
-func (d *Dax) CancelOrder(currencyPair, oid string) *HttpResponse,error {
+func (d *Dax) CancelOrder(currencyPair, oid string) (*HttpResponse, error) {
 	uri := "orders/" + currencyPair + "/" + oid
 	resp, err := d.doRequest("DELETE", uri, nil)
 	return resp, err
