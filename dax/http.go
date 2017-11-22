@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"io/ioutil"
-	"log"
+	//"log"
 	"net/http"
 	"strings"
 
@@ -40,17 +40,17 @@ func (d *Dax) doRequest(method, uri string, rawbody []byte) *HttpResponse {
 	//sign the request with aws sign s3
 	aws.SignS3(req, *d.Credentials)
 
-	log.Println("request", req)
+	//log.Println("request", req)
 	resp, err := d.Client.Do(req)
 	if err != nil {
 		panic(err)
 	}
 	defer resp.Body.Close()
 
-	log.Println("response Status:", resp.Status)
-	log.Println("response Headers:", resp.Header)
+	//log.Println("response Status:", resp.Status)
+	//log.Println("response Headers:", resp.Header)
 	body, _ := ioutil.ReadAll(resp.Body)
-	log.Println("response Body:", string(body))
+	//log.Println("response Body:", string(body))
 
 	return &HttpResponse{StatusCode: resp.StatusCode, Body: body}
 }
