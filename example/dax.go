@@ -27,13 +27,13 @@ func main() {
 	resp, err = daxClient.GetAccountInfo()
 	log.Println(string(resp.Body))
 	if err != nil {
-		log.Println(err)
+		log.Println("dax api error: ", err)
 	}
 	//get my open orders
 	resp, err = daxClient.GetMyOrders("ETH_BTC")
 	log.Println(string(resp.Body))
 	if err != nil {
-		log.Println(err)
+		log.Println("dax api error: ", err)
 	}
 	//place an order
 	resp, err = daxClient.PlaceOrder(
@@ -45,14 +45,14 @@ func main() {
 		}) //buy or sell
 	log.Println(string(resp.Body))
 	if err != nil {
-		log.Println(err)
+		log.Println("dax api error: ", err)
 	}
 	/*{"symbol":"ETH_BTC","price":"0.11111","quantity":"0.00001","type":"LIMIT","side":"SELL"}*/
 	//cancel an order
 	resp, err = daxClient.CancelOrder("ETH_BTC", "0123456789abcdef0123456789abcdef")
 	log.Println(string(resp.Body))
 	if err != nil {
-		log.Println(err)
+		log.Println("dax api error: ", err)
 	}
 	//websocket client
 	//websocket
