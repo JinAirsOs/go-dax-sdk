@@ -61,11 +61,11 @@ func main() {
 	//place an order
 	resp, err = daxClient.PlaceOrder(
 		dax.Order{CurrencyPair: "ETH_BTC", // currency pair
-			Price:     "0.11111", //order price
+			Price:     "0.11111", // order price
 			Quantity:  "0.00001", // order quantity
 			Type:      "LIMIT",   // "LIMIT"
-			BuyOrSell: "SELL",
-		}) //buy or sell
+			BuyOrSell: "SELL", // buy or sell
+		})
 	log.Println(string(resp.Body))
 	if err != nil {
 		log.Println(err)
