@@ -20,7 +20,7 @@ go doc github.com/JinAirsOs/go-dax-sdk/aws
 ```
 here is an example,you may edit it in github.com/JinAirsOs/go-dax-sdk/example/dax.go
 
-```
+```golang
 package main
 
 import (
